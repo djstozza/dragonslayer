@@ -1,0 +1,28 @@
+var DragonSlayer = DragonSlayer || {};
+
+DragonSlayer.Boot = function () {};
+
+DragonSlayer.Boot.prototype = {
+	preload: function () {
+		// this.load.image('preloadBar', 'assets/images/loadcar.png');
+		// this.load.image('logo', 'assets/images/Title.png');
+	},
+
+	create: function () {
+		this.game.stage.backgroundcolor = '#fff';
+		this.input.maxPointers = 1;
+
+		if (this.game.device.desktop) {
+			this.scale.pageAlignHorizontally = true;
+		} else {
+			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			this.scale.minWidth = 568;
+			this.scale.minHeight = 600;
+			this.scale.maxWidth = 2048;
+			this.scale.maxHeight = 1536;
+			this.scale.forcePortrait = true;
+			this.scale.setScreenSize(true);
+		}
+		this.state.start('Preloader');
+	}
+};

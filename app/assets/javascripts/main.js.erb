@@ -1,0 +1,13 @@
+
+
+$(document).ready(function() {
+	if ($('div#game').length > 0){
+		var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '');
+		game.state.add('Boot', DragonSlayer.Boot);
+		game.state.add('Preloader', DragonSlayer.Preload);
+		game.state.add('MainMenu', DragonSlayer.MainMenu);
+		game.state.add('Game', DragonSlayer.Game);
+
+		game.state.start('Boot');
+	}
+})

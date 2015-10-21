@@ -1,0 +1,46 @@
+var DragonSlayer = DragonSlayer || {};
+
+DragonSlayer.Preload = function () {
+	this.ready = false;
+};
+
+DragonSlayer.Preload.prototype = {
+	preload: function () {
+		// this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY-250, 'logo');
+		// this.splash.anchor.setTo(0.5);
+
+		// this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'preloadBar');
+		// this.preloadBar.anchor.setTo(0.5);
+
+		// this.load.setPreloadSprite(this.preloadBar);
+		this.load.bitmapFont('Ruritania', "<%= font_path 'Ruritania/font.png' %>", "<%= font_path 'Ruritania/font.fnt' %>");
+		this.load.bitmapFont('Albion', "<%= font_path 'Albion/font.png' %>", "<%= font_path 'Albion/font.fnt' %>");
+
+		this.load.image('Wall', "<%= image_path 'Wall.jpg' %>");
+		this.load.image('Grass', "<%= image_path 'grass.png' %>");
+		
+		this.load.spritesheet('Player', "<%= image_path 'champion.png' %>", 158,152, 100);
+		this.load.spritesheet('BlackKnight', "<%= image_path 'blackknight.png' %>", 129.8, 128.5, 68);
+		this.load.spritesheet('Skeleton', "<%= image_path 'Skeleton.png' %>", 176, 153, 100);
+
+		this.load.spritesheet('Skeleton1', "<%= image_path 'Skeleton1.png' %>", 182, 160, 100);
+		this.load.spritesheet('Dragon', "<%= image_path 'RedDragon2.png' %>", 264, 186, 100 );
+
+		this.load.onLoadComplete.add(this.onLoadComplete, this);
+
+	},
+
+	create: function () {
+		// this.preloadBar.cropEnabled = false;
+	},
+
+	update: function () {
+		if (this.ready === true) {
+			this.state.start('MainMenu');
+		}
+	},
+
+	onLoadComplete: function () {
+		this.ready = true;
+	}
+};

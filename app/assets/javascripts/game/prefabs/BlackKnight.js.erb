@@ -1,0 +1,54 @@
+var BlackKnight = function (game, x, y, key, frame) {
+	key = 'BlackKnight';
+	Phaser.Sprite.call(this, game, x, y, key, frame);
+	this.scale.setTo(1);
+	this.anchor.setTo(0.5);
+	this.game.physics.arcade.enableBody(this);
+	this.body.immovable = true;
+	this.checkWorldBounds = true;
+	this.animations.add('move', [3,4, 5, 6, 7, 8, 9, 10, 0]);
+	this.animations.add('attack1', [33, 34, 35, 36, 37, 38, 39, 0]);
+	this.animations.add('attack2', [28, 29, 30, 31, 32, 0]);
+	this.animations.add('die', [48, 49, 50, 51, 52, 53]);
+	this.animations.add('hit', [61, 62, 63, 64, 65, 66, 67]);
+	this.damage = 0;
+	this.health = 200;
+	
+	
+	this.bar = this.game.add.bitmapData(100,2);
+
+	this.healthBar = this.game.add.sprite(this.x - this.bar.width/2 -15, this.y - 100, this.bar);
+	
+	this.bar.context.fillRect(0, 0, this.healthBarProgress, 2);
+	this.bar.dirty = true;
+	
+	this.events.onKilled.add(this.onKilled, this);
+	this.events.onRevived.add(this.onRevived, this);
+
+};
+
+BlackKnight.prototype = Object.create(Phaser.Sprite.prototype);
+BlackKnight.prototype.constructor = BlackKnight;
+
+
+
+BlackKnight.prototype.onRevived = function () {
+	this.damage = 0;
+	this.health = 200;
+	
+
+
+	
+
+
+
+};
+
+BlackKnight.prototype.onKilled = function () {
+	this.animations.frame = 0;
+	this.health = 0;
+
+
+
+
+};
