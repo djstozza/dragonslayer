@@ -1,12 +1,12 @@
-Scoreboard = function (game) {
+PlayerWin = function (game) {
 	Phaser.Group.call(this, game);
 }
 
-Scoreboard.prototype = Object.create(Phaser.Group.prototype);
-Scoreboard.prototype.constructor = Scoreboard;
+PlayerWin.prototype = Object.create(Phaser.Group.prototype);
+PlayerWin.prototype.constructor = PlayerWin;
 
-Scoreboard.prototype.show = function (score) {
-	var bmd, background, gameOverText, messageText, scoreText, highScoreText, newHighScoreText, starText, submitButton, submitText;
+PlayerWin.prototype.show = function (score) {
+	var bmd, background, gameOverText, scoreText, highScoreText, newHighScoreText, starText, submitButton, submitText;
 	//gives the bitmap a canvas property
 	bmd = this.game.add.bitmapData(this.game.width, this.game.height);
 	bmd.ctx.fillstyle = '#000';
@@ -30,38 +30,29 @@ Scoreboard.prototype.show = function (score) {
 
 	this.y = this.game.height;
 
-	gameOverText = this.game.add.bitmapText(0, 100, 'Albion', 'Thou hast been slain!', 70);
+	gameOverText = this.game.add.bitmapText(0, 100, 'Albion', 'Thou hast slain the dragon!', 70);
 	gameOverText.x = (this.game.width - gameOverText.textWidth)/2;
 	this.add(gameOverText);
 
-	messageText = this.game.add.bitmapText(0, 150, 'Albion', 'Winners doth not taketh drugs!', 70);
-	messageText.x = (this.game.width - messageText.textWidth)/2;
-	this.add(messageText);
-
-	scoreText = this.game.add.bitmapText(0, 220, 'Albion', 'Thine Score: ' + score, 50);
+	scoreText = this.game.add.bitmapText(0, 150, 'Albion', 'Thine Score: ' + score, 50);
 	scoreText.x = (this.game.width - scoreText.textWidth)/2;
 	this.add(scoreText);
 
-	highScoreText = this.game.add.bitmapText(0, 270, 'Albion', 'Thine High Score: ' + highScore, 50);
+	highScoreText = this.game.add.bitmapText(0, 250, 'Albion', 'Thine High Score: ' + highScore, 50);
 	highScoreText.x = (this.game.width - highScoreText.textWidth)/2;
 	this.add(highScoreText);
 
-	startText = this.game.add.bitmapText(0, 320, 'Albion', 'Presseth thine ENTER key if it pleases thou to play again', 50);
+	startText = this.game.add.bitmapText(0, 300, 'Albion', 'Presseth thine ENTER key or clicketh thine mouse if it pleases thou to play again', 50);
 	startText.x = (this.game.width - startText.textWidth)/2;
 	this.add(startText);
 
-	submitButton = this.game.add.sprite(0, 340, 'SubmitSword');
+	submitButton = this.game.add.sprite(0, 320, 'SubmitSword');
 	submitButton.angle = 90;
 	submitButton.x = (this.game.width - submitButton.x + 290)/2
 	submitButton.scale.setTo(2,4);
-	// submitButton.on('click', function () {
-	// 	$.ajax({
-	// 		url: '/pages'
-	// 	})
-	// })
 	this.add(submitButton);
 
-	submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
+	submitText = this.game.add.bitmapText(0, 370, 'Albion', 'Submit Thine High Score', 50);
 	submitText.x = (this.game.width - submitText.textWidth)/2;
 	this.add(submitText);
 
@@ -77,7 +68,7 @@ Scoreboard.prototype.show = function (score) {
 
 	this.game.add.tween(this).to({y: 0}, 1000, Phaser.Easing.Bounce.Out, true);
 
-	// this.game.input.onDown.addOnce(this.restart, this);
+	this.game.input.onDown.addOnce(this.restart, this);
 	var startKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		startKey.onDown.add(function(startKey) {
     		this.game.state.start('Game', true, false);
@@ -85,7 +76,8 @@ Scoreboard.prototype.show = function (score) {
 
 };
 
-Scoreboard.prototype.restart = function () {
+PlayerWin.prototype.restart = function () {
+	
 
 	this.game.state.start('Game', true, false);
 }

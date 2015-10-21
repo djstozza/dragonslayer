@@ -20,5 +20,6 @@
 //= require ./game/prefabs/BlackKnight.js
 //= require ./game/prefabs/Skeleton.js
 //= require ./game/prefabs/Scoreboard.js
+//= require ./game/prefabs/PlayerWin.js
 //= require main.js
 //= require_tree .
