@@ -12,16 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require phaser
 //= require bootstrap-sprockets
+
+//= require phaser
 //= require ./game/states/Boot.js
 //= require ./game/states/Preload.js
 //= require ./game/states/MainMenu.js
 //= require ./game/states/Game.js
 //= require ./game/prefabs/BlackKnight.js
 //= require ./game/prefabs/Skeleton.js
+//= require ./game/prefabs/HealthPotion.js
 //= require ./game/prefabs/Scoreboard.js
 //= require ./game/prefabs/PlayerWin.js
-//= require firebase.js
+
 //= require main.js
 //= require_tree .
+
+// var dispatcher = new WebSocketRails('localhost:3000/websocket');

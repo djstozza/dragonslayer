@@ -6,7 +6,7 @@ Scoreboard.prototype = Object.create(Phaser.Group.prototype);
 Scoreboard.prototype.constructor = Scoreboard;
 
 Scoreboard.prototype.show = function (score) {
-	var bmd, background, gameOverText, messageText, scoreText, highScoreText, newHighScoreText, starText, submitButton, submitText;
+	var bmd, background, gameOverText, messageText, scoreText, highScoreText, newHighScoreText, starText;
 	//gives the bitmap a canvas property
 	bmd = this.game.add.bitmapData(this.game.width, this.game.height);
 	bmd.ctx.fillstyle = '#000';
@@ -38,8 +38,11 @@ Scoreboard.prototype.show = function (score) {
 	messageText.x = (this.game.width - messageText.textWidth)/2;
 	this.add(messageText);
 
+	Scoreboard.score = score;
+
 	scoreText = this.game.add.bitmapText(0, 220, 'Albion', 'Thine Score: ' + score, 50);
 	scoreText.x = (this.game.width - scoreText.textWidth)/2;
+
 	this.add(scoreText);
 
 	highScoreText = this.game.add.bitmapText(0, 270, 'Albion', 'Thine High Score: ' + highScore, 50);
@@ -50,20 +53,17 @@ Scoreboard.prototype.show = function (score) {
 	startText.x = (this.game.width - startText.textWidth)/2;
 	this.add(startText);
 
-	submitButton = this.game.add.sprite(0, 340, 'SubmitSword');
-	submitButton.angle = 90;
-	submitButton.x = (this.game.width - submitButton.x + 290)/2
-	submitButton.scale.setTo(2,4);
+	
+	
+	
 	// submitButton.on('click', function () {
 	// 	$.ajax({
 	// 		url: '/pages'
 	// 	})
 	// })
-	this.add(submitButton);
+	
 
-	submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
-	submitText.x = (this.game.width - submitText.textWidth)/2;
-	this.add(submitText);
+	
 
 	if (isNewHighScore) {
 		
@@ -82,6 +82,39 @@ Scoreboard.prototype.show = function (score) {
 		startKey.onDown.add(function(startKey) {
     		this.game.state.start('Game', true, false);
 		});
+
+	var submitButton = this.game.add.button(0, 340, 'SubmitSword');
+	submitButton.angle = 90;
+	submitButton.x = (this.game.width - submitButton.x + 290)/2
+	submitButton.scale.setTo(2,4);
+	submitButton.inputEnabled = true;
+   	submitButton.onInputDown.add(function() {
+   		submitScore();
+   	});
+   	
+   	submitScore = function () {
+   		$.ajax({
+			url: "/scores",
+     		type: "POST",
+     		data: {
+     			score: {
+       				user_id: gon.user_id,
+       				points: Scoreboard.score
+     			}
+     		},
+     		success: function () {
+     			location.reload();
+     		}
+   		});
+
+   	}
+   	
+
+
+   	var submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
+	submitText.x = (this.game.width - submitText.textWidth)/2;
+
+		
 
 };
 

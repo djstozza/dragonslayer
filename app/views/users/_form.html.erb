@@ -22,7 +22,7 @@
     <div class="col-md-4"></div>
     <div class="form-group col-md-4">
       <%= f.label :username, :class => 'sr-only', :for => 'exampleInputName3' %>
-      <%= f.text_field :name, :class => 'form-control', :id => 'exampleInputName3', :placeholder => 'Name' %>
+      <%= f.text_field :username, :class => 'form-control', :id => 'exampleInputName3', :placeholder => 'Name' %>
     </div>
   <div class="row">
     <div class="col-md-4"></div>
@@ -37,5 +37,10 @@
       <%= f.label :password_confirmation, :class => 'sr-only', :for => 'exampleInputPassword3' %>
       <%= f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Confrim Password' %>
     </div>
+  </div>
+
+   <div class="row">
+    <div class="col-md-4"></div>
+    <%= submit_tag "Submit", :class => 'btn btn-default submit' %>
   </div>
 <% end %>

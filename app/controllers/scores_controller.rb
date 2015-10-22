@@ -29,7 +29,7 @@ class ScoresController < ApplicationController
     respond_to do |format|
       if @score.save
         format.html { redirect_to @score, notice: 'Score was successfully created.' }
-        format.json { render :show, status: :created, location: @score }
+        format.json { render json: @score }
       else
         format.html { render :new }
         format.json { render json: @score.errors, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class ScoresController < ApplicationController
     respond_to do |format|
       if @score.update(score_params)
         format.html { redirect_to @score, notice: 'Score was successfully updated.' }
-        format.json { render :show, status: :ok, location: @score }
+        format.json { render json: @score }
       else
         format.html { render :edit }
         format.json { render json: @score.errors, status: :unprocessable_entity }

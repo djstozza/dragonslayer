@@ -1,0 +1,33 @@
+var HealthPotion = function (game, x, y, key, frame) {
+	
+	key = 'Potions';
+	Phaser.Sprite.call(this, game, x, y, key, frame);
+	this.scale.setTo(1.2);
+	this.anchor.setTo(0.5);
+	this.game.physics.arcade.enableBody(this);
+	this.body.immovable = true;
+	this.checkWorldBounds = true;
+	this.animations.add('health', [25]);
+	
+
+	
+	this.events.onKilled.add(this.onKilled, this);
+	this.events.onRevived.add(this.onRevived, this);
+};
+
+HealthPotion.prototype = Object.create(Phaser.Sprite.prototype);
+HealthPotion.prototype.constructor = HealthPotion;
+
+
+
+HealthPotion.prototype.onRevived = function () {
+	
+};
+
+HealthPotion.prototype.onKilled = function () {
+	
+
+
+
+
+};
