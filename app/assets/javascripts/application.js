@@ -21,7 +21,9 @@
 //= require ./game/states/Game.js
 //= require ./game/prefabs/BlackKnight.js
 //= require ./game/prefabs/Skeleton.js
-//= require ./game/prefabs/HealthPotion.js
+//= require ./game/prefabs/Chest.js
+//= require ./game/prefabs/Gem.js
+//= require ./game/prefabs/Coin.js
 //= require ./game/prefabs/Scoreboard.js
 //= require ./game/prefabs/PlayerWin.js
 

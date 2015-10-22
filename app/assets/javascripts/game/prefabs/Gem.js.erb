@@ -1,0 +1,33 @@
+var Gem = function (game, x, y, key, frame) {
+	
+	key = 'Rewards';
+	Phaser.Sprite.call(this, game, x, y, key, frame);
+	this.scale.setTo(1.4);
+	this.anchor.setTo(0.5);
+	this.game.physics.arcade.enableBody(this);
+	this.body.immovable = true;
+	this.checkWorldBounds = true;
+	this.animations.add('sparkle', [16,17,18,19]);
+	this.animations.play('sparkle', 8, true);
+	this.scale.setTo(1.4);
+
+	
+
+	
+	this.events.onKilled.add(this.onKilled, this);
+	this.events.onRevived.add(this.onRevived, this);
+};
+
+Gem.prototype = Object.create(Phaser.Sprite.prototype);
+Gem.prototype.constructor = Gem;
+
+
+
+Gem.prototype.onRevived = function () {
+	
+};
+
+Gem.prototype.onKilled = function () {
+	
+
+};

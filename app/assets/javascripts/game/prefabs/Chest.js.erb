@@ -1,0 +1,31 @@
+var Chest = function (game, x, y, key, frame) {
+	
+	key = 'Rewards';
+	Phaser.Sprite.call(this, game, x, y, key, frame);
+	this.scale.setTo(1.4);
+	this.anchor.setTo(0.5);
+	this.game.physics.arcade.enableBody(this);
+	this.body.immovable = true;
+	this.checkWorldBounds = true;
+	this.animations.add('sparkle', [0, 1, 2, 3, 8, 9, 10, 11]);
+	this.animations.play('sparkle', 8, true);
+	
+
+	
+	this.events.onKilled.add(this.onKilled, this);
+	this.events.onRevived.add(this.onRevived, this);
+};
+
+Chest.prototype = Object.create(Phaser.Sprite.prototype);
+Chest.prototype.constructor = Chest;
+
+
+
+Chest.prototype.onRevived = function () {
+	
+};
+
+Chest.prototype.onKilled = function () {
+	
+
+};
