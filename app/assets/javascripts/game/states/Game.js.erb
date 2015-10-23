@@ -129,7 +129,11 @@ DragonSlayer.Game.prototype = {
 		this.player1.attackSectionsOccupied = [false, false, false, false, false, false, false, false]
 		this.swordClash = this.game.add.audio('SwordClash');
 		this.gameMusic = this.game.add.audio('gameMusic');
-		this.gameMusic.play('', 0, true);
+		this.gameMusic.play('', 0, true, true);
+		this.gameMusic.loop = true;
+		this.gameMusic.onLoop.add(function (e) {
+			e.play('', 0, true, true);
+		}, this);
 	},
 
 	setSurrounds: function () {

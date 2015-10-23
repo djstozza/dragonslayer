@@ -40,7 +40,7 @@ DragonSlayer.Preload.prototype = {
 	},
 
 	update: function () {
-		if (this.cache.isSoundDecoded('gameMusic') && this.ready === true) {
+		if (this.cache.isSoundDecoded('gameMusic', 'SwordClash') && this.ready === true) {
 			this.state.start('MainMenu');
 		}
 	},
