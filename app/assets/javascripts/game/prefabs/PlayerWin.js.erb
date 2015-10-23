@@ -6,7 +6,7 @@ PlayerWin.prototype = Object.create(Phaser.Group.prototype);
 PlayerWin.prototype.constructor = PlayerWin;
 
 PlayerWin.prototype.show = function (score) {
-	var bmd, background, gameOverText, scoreText, highScoreText, newHighScoreText, starText, submitButton, submitText;
+	var bmd, background, gameOverText, scoreText, highScoreText, newHighScoreText, starText;
 	//gives the bitmap a canvas property
 	bmd = this.game.add.bitmapData(this.game.width, this.game.height);
 	bmd.ctx.fillstyle = '#000';
@@ -46,16 +46,6 @@ PlayerWin.prototype.show = function (score) {
 	startText.x = (this.game.width - startText.textWidth)/2;
 	this.add(startText);
 
-	submitButton = this.game.add.sprite(0, 320, 'SubmitSword');
-	submitButton.angle = 90;
-	submitButton.x = (this.game.width - submitButton.x + 290)/2
-	submitButton.scale.setTo(2,4);
-	this.add(submitButton);
-
-	submitText = this.game.add.bitmapText(0, 370, 'Albion', 'Submit Thine High Score', 50);
-	submitText.x = (this.game.width - submitText.textWidth)/2;
-	this.add(submitText);
-
 	if (isNewHighScore) {
 		
 		newHighScoreText = this.game.add.bitmapText(0, 50, 'Albion', 'HUZZAH! A new high score has doth been set!', 50);
@@ -68,11 +58,37 @@ PlayerWin.prototype.show = function (score) {
 
 	this.game.add.tween(this).to({y: 0}, 1000, Phaser.Easing.Bounce.Out, true);
 
-	this.game.input.onDown.addOnce(this.restart, this);
-	var startKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-		startKey.onDown.add(function(startKey) {
-    		this.game.state.start('Game', true, false);
-		});
+	if 
+
+	var submitButton = this.game.add.button(0, 340, 'SubmitSword');
+	submitButton.angle = 90;
+	submitButton.x = (this.game.width - submitButton.x + 290)/2
+	submitButton.scale.setTo(2,4);
+	submitButton.inputEnabled = true;
+   	submitButton.onInputDown.addOnce(function() {
+   		submitScore();
+   	});
+   	
+   	submitScore = function () {
+   		$.ajax({
+			url: "/scores",
+     		type: "POST",
+     		data: {
+     			score: {
+       				user_id: gon.user_id,
+       				points: PlayerWin.score,
+       				dragon_slayer: true
+     			}
+     		},
+     		success: function () {
+     			location.reload();
+     		}
+   		});
+
+   	}
+
+   	var submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
+	submitText.x = (this.game.width - submitText.textWidth)/2;
 
 };
 

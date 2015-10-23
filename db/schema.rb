@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20151021154825) do
   create_table "scores", force: :cascade do |t|
     t.integer  "points"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "dragon_slayer", default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "users", force: :cascade do |t|

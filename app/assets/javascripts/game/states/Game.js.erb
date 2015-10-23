@@ -127,12 +127,16 @@ DragonSlayer.Game.prototype = {
 		]
 
 		this.player1.attackSectionsOccupied = [false, false, false, false, false, false, false, false]
+
+
 	},
 
 	setSurrounds: function () {
 		
 		this.background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height/2.01,'Wall');
 		this.ground = this.game.add.tileSprite(0, this.game.height/2, this.game.width, this.game.height, 'Grass');
+		this.gameMusic = this.game.add.audio('gameMusic');
+		this.gameMusic.play('', 0, true);
 	
 	},
 
@@ -150,8 +154,9 @@ DragonSlayer.Game.prototype = {
 		this.dragon.animations.add('idle', [0]);
 		this.dragon.alive = false;
 		this.dragon.exists = false;
+		this.dragon.dead = false;
 		this.dragon.y = this.game.height/2.85;
-		this.dragon.health = 10000;
+		this.dragon.health = 1000;
 		this.dragon.damage = 0;
 		this.dragon.bar = this.add.bitmapData(100,10);
 		this.dragon.healthBar = this.game.add.sprite(this.dragon.x - this.dragon.bar.width/2 -15, this.dragon.y - 100, this.dragon.bar);
@@ -700,7 +705,7 @@ DragonSlayer.Game.prototype = {
 
 	unleashTheDragon: function () {
 		
-		if (!this.dragon.exists && this.score >= 0) {
+		if (!this.dragon.exists && this.score >= 8000) {
 			
 			this.dragon.exists = true;
 			this.dragon.alive = true;
@@ -791,11 +796,11 @@ DragonSlayer.Game.prototype = {
 			this.dragonLand();	
 			this.dragonHealth();
 		
-		} else if (!this.dragon.exists || !this.dragon.alive || this.player1.dead) {
+		} 
 			
-			window.clearInterval(this.dragon.dragonFlyTimer);
+			
 		
-		}
+		
 	},
 
 	dragonLandHit: function (player1, dragon) {
@@ -855,11 +860,7 @@ DragonSlayer.Game.prototype = {
 
 				}, Math.random()*8000);
 			
-			} else if (!this.dragon.exists || !this.dragon.alive || this.player1.dead) {
-			
-			window.clearInterval(this.dragon.flameOnTimer);
-		
-		}
+			} 
 
 	},
 
@@ -895,9 +896,10 @@ DragonSlayer.Game.prototype = {
 			
 			this.dragon.healthBar.width = 0;
 			
-			if (dragon.alive) {
+			if (!this.dragon.dead) {
 				this.dragon.animations.play('die', 8, false);
-				this.score += 5000;
+				this.dragon.kill();
+				this.score += 10000;
 				this.blackKnights.setAll('body.velocity.x', 0);
 				this.skeletons.setAll('body.velocity.x', 0);
 				this.dragon.body.velocity.x = 0;
@@ -910,11 +912,22 @@ DragonSlayer.Game.prototype = {
 				this.chestTimer = Number.MAX_VALUE;
 				this.crystalTimer = Number.MAX_VALUE;
 				this.gemTimer = Number.MAX_VALUE;
-				this.coinTimer = Number.MAX_VALUE;
+				this.coinTimer = Number.MAX_VALUE; 
+				for (var i = 0; i < this.blackKnights.children.length; i++) {
+					this.blackKnights.children[i].kill();
+				}
 
-				var scoreBoard = new Scoreboard(this.game);
+				for (var i = 0; i < this.skeletons.children.length; i++) {
+					this.skeletons.children[i].kill();
+				}
+				var scoreBoard = new PlayerWin(this.game);
 				scoreBoard.show(this.score);
 				this.dragon.alive = false;
+				this.dragon.exists = false;
+				window.clearInterval(this.dragon.dragonFlyTimer);
+				window.clearInterval(this.dragon.flameOnTimer);
+				this.dragon.dead = true;
+
 			}		
 		}
 		
