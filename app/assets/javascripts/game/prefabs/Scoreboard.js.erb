@@ -51,19 +51,7 @@ Scoreboard.prototype.show = function (score) {
 
 	startText = this.game.add.bitmapText(0, 320, 'Albion', 'Presseth thine ENTER key if it pleases thou to play again', 50);
 	startText.x = (this.game.width - startText.textWidth)/2;
-	this.add(startText);
-
-	
-	
-	
-	// submitButton.on('click', function () {
-	// 	$.ajax({
-	// 		url: '/pages'
-	// 	})
-	// })
-	
-
-	
+	this.add(startText);	
 
 	if (isNewHighScore) {
 		
@@ -93,6 +81,7 @@ Scoreboard.prototype.show = function (score) {
    	});
    	
    	submitScore = function () {
+   		
    		$.ajax({
 			url: "/scores",
      		type: "POST",
@@ -114,7 +103,17 @@ Scoreboard.prototype.show = function (score) {
    	var submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
 	submitText.x = (this.game.width - submitText.textWidth)/2;
 
-		
+	var restartButton = this.game.add.button(0, 430, 'SubmitSword');
+	restartButton.angle = 90;
+	restartButton.x = (this.game.width - restartButton.x + 290)/2
+	restartButton.scale.setTo(2,4);
+	restartButton.inputEnabled = true;
+   	restartButton.onInputDown.addOnce(function() {
+   		location.reload();
+   	}, this);	
+
+   	var restartText = this.game.add.bitmapText(0, 480, 'Albion', 'Play Again', 50);
+	restartText.x = (this.game.width - restartText.textWidth)/2;
 
 };
 

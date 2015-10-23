@@ -3,18 +3,24 @@ var DragonSlayer = DragonSlayer || {};
 DragonSlayer.Boot = function () {};
 
 DragonSlayer.Boot.prototype = {
+	
 	preload: function () {
+		
 		this.load.image('preloadBar', "<%= image_path 'preloadBar.png' %>");
 		
 	},
 
 	create: function () {
+		
 		this.game.stage.backgroundcolor = '#fff';
 		this.input.maxPointers = 1;
 
 		if (this.game.device.desktop) {
+			
 			this.scale.pageAlignHorizontally = true;
+		
 		} else {
+			
 			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			this.scale.minWidth = 568;
 			this.scale.minHeight = 600;
@@ -23,6 +29,8 @@ DragonSlayer.Boot.prototype = {
 			this.scale.forcePortrait = true;
 			this.scale.setScreenSize(true);
 		}
+		
 		this.state.start('Preloader');
+	
 	}
 };

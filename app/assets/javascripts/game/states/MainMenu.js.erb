@@ -3,7 +3,9 @@ var DragonSlayer = DragonSlayer || {};
 DragonSlayer.MainMenu = function () {};
 
 DragonSlayer.MainMenu.prototype = {
+	
 	create: function () {
+		
 		this.background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'Grass');
 		// this.background.autoScroll(0, 1000);
 		this.ground = this.game.add.tileSprite(0, 0, this.game.width, this.game.height/2.01,'Wall');
@@ -35,12 +37,11 @@ DragonSlayer.MainMenu.prototype = {
 		this.startText4 = this.game.add.bitmapText(0, 0, 'Albion', 'Presseth thine ENTER key or clicketh thine mouse to commence thine quest.', 50);
 		this.startText4.x = this.game.width/2 - this.startText4.textWidth/2;
 		this.startText4.y = 270;
-
-		
-		
+	
 	},
 
 	update: function () {
+		
 		var startKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		startKey.onDown.add(function(startKey) {
     		this.game.state.start('Game');

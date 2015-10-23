@@ -6,6 +6,7 @@ PlayerWin.prototype = Object.create(Phaser.Group.prototype);
 PlayerWin.prototype.constructor = PlayerWin;
 
 PlayerWin.prototype.show = function (score) {
+	
 	var bmd, background, gameOverText, scoreText, highScoreText, newHighScoreText, starText;
 	//gives the bitmap a canvas property
 	bmd = this.game.add.bitmapData(this.game.width, this.game.height);
@@ -58,8 +59,6 @@ PlayerWin.prototype.show = function (score) {
 
 	this.game.add.tween(this).to({y: 0}, 1000, Phaser.Easing.Bounce.Out, true);
 
-
-
 	var submitButton = this.game.add.button(0, 340, 'SubmitSword');
 	submitButton.angle = 90;
 	submitButton.x = (this.game.width - submitButton.x + 290)/2
@@ -67,9 +66,11 @@ PlayerWin.prototype.show = function (score) {
 	submitButton.inputEnabled = true;
    	submitButton.onInputDown.addOnce(function() {
    		submitScore();
+   	
    	});
    	
    	submitScore = function () {
+   		
    		$.ajax({
 			url: "/scores",
      		type: "POST",
@@ -80,6 +81,7 @@ PlayerWin.prototype.show = function (score) {
        				dragon_slayer: true
      			}
      		},
+     		
      		success: function () {
      			location.reload();
      		}
@@ -89,6 +91,19 @@ PlayerWin.prototype.show = function (score) {
 
    	var submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
 	submitText.x = (this.game.width - submitText.textWidth)/2;
+
+	var restartButton = this.game.add.button(0, 430, 'SubmitSword');
+	restartButton.angle = 90;
+	restartButton.x = (this.game.width - restartButton.x + 290)/2
+	restartButton.scale.setTo(2,4);
+	restartButton.inputEnabled = true;
+   	restartButton.onInputDown.addOnce(function() {
+   		location.reload();
+   	
+   	});
+
+   	var restartText = this.game.add.bitmapText(0, 470, 'Albion', 'Play Again', 50);
+	restartText.x = (this.game.width - submitText.textWidth)/2;
 
 };
 
