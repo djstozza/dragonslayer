@@ -9,10 +9,10 @@ DragonSlayer.Preload.prototype = {
 		// this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY-250, 'logo');
 		// this.splash.anchor.setTo(0.5);
 
-		// this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'preloadBar');
-		// this.preloadBar.anchor.setTo(0.5);
+		this.preloadBar = this.add.sprite(0, 0, 'preloadBar');
+		this.preloadBar.anchor.setTo(0.5);
 
-		// this.load.setPreloadSprite(this.preloadBar);
+		this.load.setPreloadSprite(this.preloadBar);
 		this.load.bitmapFont('Ruritania', "<%= font_path 'Ruritania/font.png' %>", "<%= font_path 'Ruritania/font.fnt' %>");
 		this.load.bitmapFont('Albion', "<%= font_path 'Albion/font.png' %>", "<%= font_path 'Albion/font.fnt' %>");
 
@@ -30,18 +30,18 @@ DragonSlayer.Preload.prototype = {
 		this.load.spritesheet('Skeleton1', "<%= image_path 'Skeleton1.png' %>", 182, 160, 100);
 		this.load.spritesheet('Dragon', "<%= image_path 'RedDragon2.png' %>", 264, 186, 100 );
 
-		this.load.audio('gameMusic', "<%= audio_path 'MedievalMadnessSoundtrack.mp3' %>");
+		this.load.audio('gameMusic', ["<%= audio_path 'MedievalMadnessSoundtrack.mp3' %>", "<%= audio_path 'MedievalMadnessSoundtrack.ogg' %>"]);
 
 		this.load.onLoadComplete.add(this.onLoadComplete, this);
 
 	},
 
 	create: function () {
-		// this.preloadBar.cropEnabled = false;
+		this.preloadBar.cropEnabled = false;
 	},
 
 	update: function () {
-		if (this.ready === true) {
+		if (this.cache.isSoundDecoded('gameMusic') && this.ready === true) {
 			this.state.start('MainMenu');
 		}
 	},

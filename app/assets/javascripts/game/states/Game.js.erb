@@ -128,15 +128,15 @@ DragonSlayer.Game.prototype = {
 
 		this.player1.attackSectionsOccupied = [false, false, false, false, false, false, false, false]
 
-
+		this.gameMusic = this.game.add.audio('gameMusic');
+		this.gameMusic.play('', 0, true);
 	},
 
 	setSurrounds: function () {
 		
 		this.background = this.game.add.tileSprite(0, 0, this.game.width, this.game.height/2.01,'Wall');
 		this.ground = this.game.add.tileSprite(0, this.game.height/2, this.game.width, this.game.height, 'Grass');
-		this.gameMusic = this.game.add.audio('gameMusic');
-		this.gameMusic.play('', 0, true);
+		
 	
 	},
 
