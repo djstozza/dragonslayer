@@ -28,6 +28,7 @@ DragonSlayer.Preload.prototype = {
 		this.load.spritesheet('Skeleton1', "<%= image_path 'Skeleton1.png' %>", 182, 160, 100);
 		this.load.spritesheet('Dragon', "<%= image_path 'RedDragon2.png' %>", 264, 186, 100 );
 
+		this.load.audio('SwordClash', ["<%= audio_path 'Swords.mp3' %>", "<%= audio_path 'Swords.ogg' %>"]);
 		this.load.audio('gameMusic', ["<%= audio_path 'MedievalMadnessSoundtrack.mp3' %>", "<%= audio_path 'MedievalMadnessSoundtrack.ogg' %>"]);
 
 		this.load.onLoadComplete.add(this.onLoadComplete, this);

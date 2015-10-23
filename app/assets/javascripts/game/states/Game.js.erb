@@ -127,7 +127,7 @@ DragonSlayer.Game.prototype = {
 		]
 
 		this.player1.attackSectionsOccupied = [false, false, false, false, false, false, false, false]
-
+		this.swordClash = this.game.add.audio('SwordClash');
 		this.gameMusic = this.game.add.audio('gameMusic');
 		this.gameMusic.play('', 0, true);
 	},
@@ -434,7 +434,7 @@ DragonSlayer.Game.prototype = {
 					player1.anchor.setTo(0.5, 0.58);
 					
 					if ((blackKnight.scale.x === 1 && player1.scale.x === -1) || (blackKnight.scale.x === -1 && player1.scale.x === 1)) {
-						
+						// this.swordClash.play('', 0, true);
 						blackKnight.animations.play('hit', 8, false);
 						blackKnight.damage++;
 					
