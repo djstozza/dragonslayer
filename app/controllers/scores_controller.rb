@@ -1,6 +1,6 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_if_logged_in, :only => [:show, :edit, :update]
   # GET /scores
   # GET /scores.json
   def index
@@ -69,6 +69,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:points, :user_id)
+      params.require(:score).permit(:points, :user_id, :dragon_slayer)
     end
 end

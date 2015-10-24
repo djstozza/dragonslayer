@@ -71,50 +71,69 @@ Scoreboard.prototype.show = function (score) {
     		this.game.state.start('Game', true, false);
 		});
 
-	var submitButton = this.game.add.button(0, 340, 'SubmitSword');
-	submitButton.angle = 90;
-	submitButton.x = (this.game.width - submitButton.x + 290)/2
-	submitButton.scale.setTo(2,4);
-	submitButton.inputEnabled = true;
-   	submitButton.onInputDown.add(function() {
-   		submitScore();
-   	});
-   	
-   	submitScore = function () {
-   		
-   		$.ajax({
-			url: "/scores",
-     		type: "POST",
-     		data: {
-     			score: {
-       				user_id: gon.user_id,
-       				points: Scoreboard.score
-     			}
-     		},
-     		success: function () {
-     			location.reload();
-     		}
-   		});
+	if (score > 0) {
 
-   	}
-   	
+		var submitButton = this.game.add.button(0, 340, 'SubmitSword');
+		submitButton.angle = 90;
+		submitButton.x = (this.game.width - submitButton.x + 290)/2
+		submitButton.scale.setTo(2,4);
+		submitButton.inputEnabled = true;
+	   	submitButton.onInputDown.add(function() {
+	   		submitScore();
+	   	});
+	   	
+	   	submitScore = function () {
+	   		
+	   		$.ajax({
+				url: "/scores",
+	     		type: "POST",
+	     		data: {
+	     			score: {
+	       				user_id: gon.user_id,
+	       				points: Scoreboard.score
+	       				
+	     			}
+	     		},
+	     		success: function () {
+	     			location.reload();
+	     		}
+	   		});
+
+	   	}
+	   	
 
 
-   	var submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
-	submitText.x = (this.game.width - submitText.textWidth)/2;
+	   	var submitText = this.game.add.bitmapText(0, 390, 'Albion', 'Submit Thine High Score', 50);
+		submitText.x = (this.game.width - submitText.textWidth)/2;
 
-	var restartButton = this.game.add.button(0, 430, 'SubmitSword');
-	restartButton.angle = 90;
-	restartButton.x = (this.game.width - restartButton.x + 290)/2
-	restartButton.scale.setTo(2,4);
-	restartButton.inputEnabled = true;
-   	restartButton.onInputDown.addOnce(function() {
-   		location.reload();
-   	}, this);	
+		var restartButton = this.game.add.button(0, 430, 'SubmitSword');
+		restartButton.angle = 90;
+		restartButton.x = (this.game.width - restartButton.x + 290)/2
+		restartButton.scale.setTo(2,4);
+		restartButton.inputEnabled = true;
+	   	restartButton.onInputDown.addOnce(function() {
+	   		location.reload();
+	   	}, this);	
 
-   	var restartText = this.game.add.bitmapText(0, 480, 'Albion', 'Play Again', 50);
-	restartText.x = (this.game.width - restartText.textWidth)/2;
+	   	var restartText = this.game.add.bitmapText(0, 480, 'Albion', 'Play Again', 50);
+		restartText.x = (this.game.width - restartText.textWidth)/2;
 
+	} else {
+
+		var restartButton = this.game.add.button(0, 390, 'SubmitSword');
+		restartButton.angle = 90;
+		restartButton.x = (this.game.width - restartButton.x + 290)/2
+		restartButton.scale.setTo(2,4);
+		restartButton.inputEnabled = true;
+	   	restartButton.onInputDown.addOnce(function() {
+	   		location.reload();
+	   	}, this);	
+
+	   	var restartText = this.game.add.bitmapText(0, 430, 'Albion', 'Play Again', 50);
+		restartText.x = (this.game.width - restartText.textWidth)/2;
+
+	}
+	
 };
 
 Scoreboard.prototype.restart = function () {

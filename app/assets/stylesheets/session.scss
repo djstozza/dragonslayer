@@ -1,3 +1,38 @@
-// Place all the styles related to the Session controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+div#slider {
+	overflow: hidden;
+	height: 20em;
+	width: 30em;
+}
+
+div#slider figure img {
+	float: left;
+}
+
+div#slider figure { 
+	position: relative;
+	width: 360em;
+	margin: 0;
+	left: 0;
+	text-align: left;
+	animation: 60s slide infinite;
+}
+
+img {
+	height: 20em;
+	width: 30em;
+}
+
+@keyframes slide {
+0%	{ left: 0%; }
+9% { left: -100%; }
+18% { left: -200%; }
+27% { left: -300%; }
+36% { left: -400%; }
+45% { left: -500%; }
+54% { left: -600%; }
+63% { left: -700%; }
+72% { left: -800%; }
+81% { left: -900%; }
+90% { left: -1000%; }
+100% { left: -1100%; }
+}

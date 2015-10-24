@@ -3,7 +3,7 @@ class CreateScores < ActiveRecord::Migration
     create_table :scores do |t|
       t.integer :points
       t.integer :user_id
-      t.boolean :dragon_slayer, :default => false
+      t.boolean :dragon_slayer
 
       t.timestamps null: false
     end
