@@ -131,9 +131,9 @@ DragonSlayer.Game.prototype = {
 		this.gameMusic = this.game.add.audio('gameMusic');
 		this.gameMusic.play('', 0, true, true);
 		this.gameMusic.loop = true;
-		this.gameMusic.onLoop.add(function (e) {
-			e.play('', 0, true, true);
-		}, this);
+		// this.gameMusic.onLoop.add(function (e) {
+		// 	e.play('', 0, true, true);
+		// }, this);
 	},
 
 	setSurrounds: function () {
@@ -456,7 +456,7 @@ DragonSlayer.Game.prototype = {
 									player1.play('hit', 8, false);
 									player1.anchor.setTo(0.5, 0.52);
 									player1.damage++;
-
+									
 								});
 							
 							} else {
@@ -1081,6 +1081,7 @@ DragonSlayer.Game.prototype = {
 
 	update: function () {
 		
+		this.gameMusic.loop = true;
 		this.movePlayer1();
 		this.player1Health();
 

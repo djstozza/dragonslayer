@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass'
 gem 'phaser-rails'
 # gem 'eventmachine', github: 'eventmachine/eventmachine', branch: :master
-# gem 'websocket-rails'
+gem 'websocket-rails'
 # gem 'firebase'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
