@@ -72,20 +72,20 @@ PlayerWin.prototype.show = function (score) {
    	submitScore = function () {
    		
    		$.ajax({
-			url: "/scores",
-     		type: "POST",
-     		data: {
-     			score: {
-       				user_id: gon.user_id,
-       				points: PlayerWin.score,
-       				dragon_slayer: true
-     			}
-     		},
-     		
-     		success: function () {
-     			location.reload();
-     		}
-   		});
+				url: "/scores",
+	     		type: "POST",
+	     		data: {
+	     			score: {
+	       				user_id: gon.user_id,
+	       				points: PlayerWin.score,
+	       				dragon_slayer: true
+	     			}
+	     		},
+	     		success: function () {
+	     			location.reload();
+	     		}
+	   		});
+
 
    	}
 

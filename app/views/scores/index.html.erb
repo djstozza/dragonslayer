@@ -1,31 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Scores</h1>
-
+<h2>Dragon Slayer</h2>
 <table>
   <thead>
     <tr>
       <th>Points</th>
       <th>User</th>
-      <th>Dragon Slayer</th>
       <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @scores.each do |score| %>
+      <% if score.dragon_slayer === true %>
       <tr>
         <td><%= score.points %></td>
-        <td><%= score.user.username %></td>
-        <td><%= score.user.dragon_slayer %></td>
-        <td><%= link_to 'Show', score %></td>
-        <td><%= link_to 'Edit', edit_score_path(score) %></td>
-        <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Score', new_score_path %>
+<h2>Hall of Slain</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Points</th>
+      <th>User</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scores.each do |score| %>
+      <% if score.dragon_slayer === false %>
+      <tr>
+        <td><%= score.points %></td>
+        <td><%= score.user.username %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Slay the Dragon', pages_home_path %>

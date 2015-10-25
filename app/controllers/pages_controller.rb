@@ -3,11 +3,6 @@ class PagesController < ApplicationController
   def home
   	gon.user_id = @current_user.id
 
-  	@scores = Score.where( :user_id => @current_user )
-  	@scores.pluck(:points).sort.last if @scores
-  	
-
-
   end
 
   private

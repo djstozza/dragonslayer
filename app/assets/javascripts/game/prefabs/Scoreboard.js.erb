@@ -53,6 +53,7 @@ Scoreboard.prototype.show = function (score) {
 	startText.x = (this.game.width - startText.textWidth)/2;
 	this.add(startText);	
 
+
 	if (isNewHighScore) {
 		
 		newHighScoreText = this.game.add.bitmapText(0, 50, 'Albion', 'HUZZAH! A new high score has doth been set!', 50);
@@ -78,9 +79,9 @@ Scoreboard.prototype.show = function (score) {
 		submitButton.x = (this.game.width - submitButton.x + 290)/2
 		submitButton.scale.setTo(2,4);
 		submitButton.inputEnabled = true;
-	   	submitButton.onInputDown.add(function() {
+	   	submitButton.onInputDown.addOnce(function() {
 	   		submitScore();
-	   	});
+	   	}, this);
 	   	
 	   	submitScore = function () {
 	   		
@@ -90,8 +91,8 @@ Scoreboard.prototype.show = function (score) {
 	     		data: {
 	     			score: {
 	       				user_id: gon.user_id,
-	       				points: Scoreboard.score
-	       				
+	       				points: Scoreboard.score,
+	       				dragon_slayer: false
 	     			}
 	     		},
 	     		success: function () {

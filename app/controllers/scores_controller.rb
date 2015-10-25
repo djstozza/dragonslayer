@@ -1,10 +1,11 @@
 class ScoresController < ApplicationController
-  
+  before_action :set_score, only: [:show, :edit, :update, :destroy]
   before_action :check_if_logged_in, :only => [:index]
   # GET /scores
   # GET /scores.json
   def index
     @scores = Score.all
+    @scores = @scores.order(points: :desc)
   end
 
   # GET /scores/1
@@ -72,7 +73,9 @@ class ScoresController < ApplicationController
       params.require(:score).permit(:points, :user_id, :dragon_slayer)
     end
 
-     def check_if_logged_in
+    def check_if_logged_in
       redirect_to root_path unless @current_user.present?
     end
+
+
 end

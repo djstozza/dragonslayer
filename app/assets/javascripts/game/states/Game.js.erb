@@ -375,7 +375,7 @@ DragonSlayer.Game.prototype = {
 				
 
 
-					// if (((parseInt(blackKnight.body.position.x) - parseInt(this.player1.body.position.x) > 10) || (parseInt(this.player1.body.position.x) - parseInt(blackKnight.body.position.x) > 10)) && ((parseInt( blackKnight.body.position.x) - parseInt(this.player1.body.position.x) > 10 || parseInt(this.player1.body.position.x) - parseInt( blackKnight.body.position.x) > 10 ))) {
+					if (((parseInt(blackKnight.body.position.x) - parseInt(this.player1.body.position.x) > 10) || (parseInt(this.player1.body.position.x) - parseInt(blackKnight.body.position.x) > 10)) && ((parseInt( blackKnight.body.position.x) - parseInt(this.player1.body.position.x) > 10 || parseInt(this.player1.body.position.x) - parseInt( blackKnight.body.position.x) > 10 ))) {
 
 						if (parseInt(blackKnight.body.position.x) - parseInt(this.player1.body.position.x) > 40 && ((blackKnight.scale.x === -1 && this.player1.scale.x === 1) || (blackKnight.scale.x === -1 && this.player1.scale.x === -1))) {
 							
@@ -405,8 +405,126 @@ DragonSlayer.Game.prototype = {
 							blackKnight.body.velocity.y = 0;
 						}
 
-					// } else if (((parseInt(blackKnight.body.position.x) - parseInt(this.player1.body.position.x) < 10) || (parseInt(this.player1.body.position.x) - parseInt(blackKnight.body.position.x) < 10)) && ((parseInt( blackKnight.body.position.x) - parseInt(this.player1.body.position.x) < 10 || parseInt(this.player1.body.position.x) - parseInt( blackKnight.body.position.x) < 10 ))) {
+					} else if (((parseInt(blackKnight.body.position.x) - parseInt(this.player1.body.position.x) <= 10) || (parseInt(this.player1.body.position.x) - parseInt(blackKnight.body.position.x) <= 10)) && ((parseInt( blackKnight.body.position.y) - parseInt(this.player1.body.position.y) <= 10 || parseInt(this.player1.body.position.y) - parseInt( blackKnight.body.position.y) <= 10 ))) {
+						for (var j = 0; j < this.player1.attackSectionsOccupied.length; j++) {
+							switch (j) {
+								case 0:
+									
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[j] = true;
+										
+										
+									}
 
+									break;
+
+								case 1:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[1] = true;
+										
+									}
+
+									break;
+
+								case 2:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[2] = true;
+										
+									}
+
+									break;
+
+								case 3:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[3] = true;
+										
+									}
+
+									break;
+
+								case 4:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[j] = true;
+										
+									}
+
+									break;
+
+								case 5:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[j] = true;
+										
+									}
+
+									break;
+
+								case 6:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[6] = true;
+										
+									}
+
+									break;
+
+
+								case 7:
+
+									if (this.player1.attackSectionsOccupied[j] === false) {
+										blackKnight.body.position.x = this.player1.attackSections[j].x;
+										blackKnight.body.position.y = this.player1.attackSections[j].y;
+										blackKnight.body.velocity.x = this.player1.body.velocity.x;
+										blackKnight.body.velocity.y = this.player1.body.velocity.y;
+										this.player1.attackSectionsOccupied[j] = true;
+									}
+
+									break;
+
+
+							}
+							console.log(this.player1.attackSectionsOccupied);
+						}
+						
+
+						// if (this.player1.attackSectionsOccupied[0])
+
+
+						// blackKnight.body.velocity.x = 0;
+						// blackKnight.body.velocity.y = 0;
 					// 	for (var j = 0; j < this.player1.attackSectionsOccupied.length; j++) {
 							
 					// 		if (this.player1.attackSectionsOccupied[j] === false) {
@@ -424,7 +542,7 @@ DragonSlayer.Game.prototype = {
 					// 	}
 						
 
-					// }
+					}
 
 					
 			
