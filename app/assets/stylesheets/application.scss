@@ -19,3 +19,13 @@
 @import "pages.scss";
 @import "session.scss";
 
+/*@font-face {
+	font-family: Ruritania; src: url("<%= font_path 'Ruritania/Ruritania.tff' %>");
+}*/
+
+.navbar-brand {
+	font-family: Ruritania, sans-serif;
+	font-size: 30px;
+	padding-top: 0.7em;
+}
+

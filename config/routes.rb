@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root :to => 'session#new'
   get 'pages/home'
   
+  resources :scores
+  resources :users
+
+
   get '/session' => 'session#show'
   get '/login' => 'session#new'
   get '/session' => 'session#show'
@@ -10,7 +14,6 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
 
-  resources :scores
-  resources :users
+ 
  
 end

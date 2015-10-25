@@ -81,7 +81,7 @@ DragonSlayer.Game.prototype = {
             heal: this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT)
 		};
 		
-		this.scoreText = this.game.add.bitmapText(10,10, 'Albion', 'Thine score doth be: 0', 50);
+		this.scoreText = this.game.add.bitmapText(10, 60, 'Albion', 'Thine score doth be: 0', 50);
 
 		this.player1.attackSections = [	
 			{
@@ -943,7 +943,7 @@ DragonSlayer.Game.prototype = {
 			}		
 		}
 		
-		this.dragon.healthBar.y = 25;
+		this.dragon.healthBar.y = 75	;
 	},
 
 	createHealthPotion: function () {
@@ -963,7 +963,7 @@ DragonSlayer.Game.prototype = {
 		this.healthPotionCollected.exists = true;
 		this.healthPotionCollected.x = healthPotion.x;
 		this.healthPotionCollected.y = healthPotion.y;
-		this.game.add.tween(this.healthPotionCollected).to({x: 30, y: 70}, 400, Phaser.Easing.Linear.NONE, true, 500);
+		this.game.add.tween(this.healthPotionCollected).to({x: 30, y: 120}, 400, Phaser.Easing.Linear.NONE, true, 500);
 
 		
 	},
