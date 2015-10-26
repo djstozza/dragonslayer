@@ -81,17 +81,16 @@ Scoreboard.prototype.show = function (score) {
 		submitButton.inputEnabled = true;
 	   	submitButton.onInputDown.addOnce(function() {
 	   		submitScore();
-	   	}, this);
+	   	});
 	   	
-	   	submitScore = function () {
-	   		
+	   	submitScore = function () { 		
 	   		$.ajax({
 				url: "/scores",
 	     		type: "POST",
 	     		data: {
 	     			score: {
 	       				user_id: gon.user_id,
-	       				points: Scoreboard.score,
+	       				points: this.score,
 	       				dragon_slayer: false
 	     			}
 	     		},
