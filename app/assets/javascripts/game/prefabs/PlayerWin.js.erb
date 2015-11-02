@@ -39,6 +39,8 @@ PlayerWin.prototype.show = function (score) {
 	scoreText.x = (this.game.width - scoreText.textWidth)/2;
 	this.add(scoreText);
 
+	PlayerWin.score = score;
+
 	highScoreText = this.game.add.bitmapText(0, 250, 'Albion', 'Thine High Score: ' + highScore, 50);
 	highScoreText.x = (this.game.width - highScoreText.textWidth)/2;
 	this.add(highScoreText);

@@ -76,6 +76,7 @@ Scoreboard.prototype.show = function (score) {
 
 		var submitButton = this.game.add.button(0, 340, 'SubmitSword');
 		submitButton.angle = 90;
+		submitButton.moveUp();
 		submitButton.x = (this.game.width - submitButton.x + 290)/2
 		submitButton.scale.setTo(2,4);
 		submitButton.inputEnabled = true;
