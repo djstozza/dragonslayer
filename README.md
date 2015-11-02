@@ -4,7 +4,7 @@
 
 [dragonslayer.herokuapp.com](https://dragonslayer.herokuapp.com/)
 
-I have been interested in making a game for a while so I decided to try out Phaser.js, a robust framework that can apply physics to games. I found some sprite sheets for characters from Heroes of Might and Magic III, a turn-based strategy game from the 90's, and decided to make the user move a knight across the screen while battling minions with the aim of slaying a dragon! I used Rails as a back end to handle user logins and a scoreboard.
+I have been interested in making a game for a while so I decided to try out Phaser.js, a robust framework that can apply physics to games. I found some sprite sheets for characters from Heroes of Might and Magic III, a turn-based strategy game from the 90's, and decided to make the user move a knight across the screen while battling minions with the aim of slaying a dragon! I used Rails to handle user logins and a scoreboard.
 
 The scores from the game are added to the highscores table through an AJAX request.
 
