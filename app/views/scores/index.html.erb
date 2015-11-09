@@ -1,50 +1,51 @@
-<p id="notice"><%= notice %></p>
-
-<h2>Dragon Slayer</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Points</th>
-      <th>User</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @scores.each do |score| %>
-      <% if score.dragon_slayer === true %>
+<div class="scoreboard">
+  <h2>Dragon Slayers</h2>
+  <table id="score-table" class="table table-striped table-bordered">
+    <thead>
       <tr>
-        <td><%= score.points %></td>
-        <td><%= score.user.username %></td>
+        <th>Position</th>
+        <th>Points</th>
+        <th>User</th>
       </tr>
+    </thead>
+
+    <tbody>
+      <% @scores.each_with_index do |score, i| %>
+        <% if score.dragon_slayer === true %>
+        <tr>
+          <td><%= i.ordinalize %></td>
+          <td><%= score.points %></td>
+          <td><%= score.user.username %></td>
+        </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<h2>Hall of Slain</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Points</th>
-      <th>User</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @scores.each do |score| %>
-      <% if score.dragon_slayer === false %>
+  <h2>Hall of Slain</h2>
+  <table id="score-table" class="table table-striped table-bordered">
+    <thead>
       <tr>
-        <td><%= score.points %></td>
-        <td><%= score.user.username %></td>
+        <th>Position</th>
+        <th>Points</th>
+        <th>User</th>
       </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<%= link_to 'Slay the Dragon', pages_home_path %>
+    <tbody>
+      <% @scores.each_with_index do |score, i| %>
+        <% if score.dragon_slayer === false %>
+        
+        <tr>
+          <td><%= i.ordinalize %></td>
+          <td><%= score.points %></td>
+          <td><%= score.user.username %></td>
+        </tr>
+ 
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

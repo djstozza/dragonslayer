@@ -1,5 +1,18 @@
 header {
-	padding-bottom: 1.2em;
+	margin: 0 auto;
+	text-align: center;
+}
+
+div.signin-container {
+	padding-top: 0.5em;
+	margin: 0 auto;
+	background-color: white;
+	opacity: 0.9;
+	max-width: 56em;
+	border-radius: 0% 0% 15% 15%;
+	input.form-control {
+		max-width: 241.328px;
+	}
 }
 
 #align {
@@ -7,10 +20,11 @@ header {
 }
 
 div#slider {
+	margin: 0 auto;
 	overflow: hidden;
-	height: 30em;
-	width: 60em;
-	border-radius: 5%;
+	height: 28em;
+	width: 56em;
+	border-radius: 10% 10% 0% 0%;
 	min-height: 5em;
 	min-width: 10em;
 }
@@ -21,20 +35,21 @@ div#slider figure img {
 
 div#slider figure { 
 	position: relative;
-	width: 720em;
+	width: 672em;
 	margin: 0;
 	left: 0;
 	text-align: left;
 	animation: 50s slide infinite;
-	min-width: 60em;
+	min-width: 56em;
+	img {
+		height: 28em;
+		width: 56em;
+		min-height: 5em;
+		min-width: 10em;
+	}
 }
 
-img {
-	height: 30em;
-	width: 60em;
-	min-height: 5em;
-	min-width: 10em;
-}
+
 
 @keyframes slide {
 0%	{ left: 0%; }

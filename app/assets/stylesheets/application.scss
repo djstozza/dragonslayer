@@ -18,10 +18,22 @@
 @import "bootstrap";
 @import "pages.scss";
 @import "session.scss";
+@import "scores.scss";
 
-/*@font-face {
-	font-family: Ruritania; src: url("<%= font_path 'Ruritania/Ruritania.tff' %>");
-}*/
+
+@font-face {
+    font-family: Kingthings_Spike;
+    
+    src: url("./kingthings_spike/Kingthings_Spike.ttf") format('truetype'),
+         
+}
+
+body {
+	background-image: image-url('medieval-wall.jpg');
+	background-size: 100vw;
+}
+
+
 
 .navbar-brand {
 	font-family: Ruritania, sans-serif;
