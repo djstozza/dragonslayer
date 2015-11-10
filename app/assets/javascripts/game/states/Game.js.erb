@@ -855,6 +855,7 @@ DragonSlayer.Game.prototype = {
 							dragon.anchor.setTo(0.5, 0.52);
 							dragon.animations.play('fire1', 8, false).onComplete.add(function () {
 								
+								
 								if (((dragon.scale.x === -1.75 && parseInt(dragon.body.position.x)-parseInt(player1.body.position.x) < 100)|| (dragon.scale.x === 1.75 && parseInt(player1.body.position.x)-parseInt(dragon.body.position.x) < 380))&&(parseInt(player1.body.position.y))) {
 
 									player1.damage += 1000;
