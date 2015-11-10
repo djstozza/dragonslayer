@@ -255,8 +255,9 @@ DragonSlayer.Game.prototype = {
 
 			} else {
 				
-				this.blackKnights.children[i].moveUp();
-				
+				this.player1.moveDown();
+				this.ground.moveDown();
+				this.background.moveDown();
 			}
 		}
 
@@ -273,15 +274,16 @@ DragonSlayer.Game.prototype = {
 
 			if (this.player1.y > this.skeletons.children[i].y) {
 				
-				
+				this.player1.moveUp()
 				this.skeletons.children[i].moveDown();
 				this.ground.moveDown();
 				this.background.moveDown();
 
 			} else {
 				
-				this.skeleton.moveUp();
-				
+				this.player1.moveDown();
+				this.ground.moveDown();
+				this.background.moveDown();
 			}
 
 			for (var j = 0; j < this.blackKnights.children.length; j++) {
@@ -349,27 +351,30 @@ DragonSlayer.Game.prototype = {
 
 				} else if (parseInt(this.player1.body.position.x) - parseInt(blackKnight.body.position.x) > 40 && ((blackKnight.scale.x === 1 && this.player1.scale.x === 1) || (blackKnight.scale.x === 1 && this.player1.scale.x === -1) ) ) {
 					
+
 					blackKnight.body.velocity.x = 100;
 					blackKnight.animations.play('move', 8, false);
-
 				} else {
 					
 					blackKnight.body.velocity.x = 0;
 				
 				}
 				
-				if (this.player1.body.position.y > blackKnight.body.position.y - 4) {
+				if (this.player1.body.position.y > blackKnight.body.position.y - 5) {
 					
 					blackKnight.body.velocity.y = 100;
 					blackKnight.animations.play('move', 8, false);
 				
-				} else if (this.player1.y < blackKnight.body.position.y + 4) {
+				} else if (this.player1.y < blackKnight.y - 5) {
 					
 					blackKnight.body.velocity.y = -100;
 					blackKnight.animations.play('move', 8, false);
 				
-				} else {
+				} 
+				else {
+					
 					blackKnight.body.velocity.y = 0;
+					
 				}
 						
 			}
@@ -378,7 +383,7 @@ DragonSlayer.Game.prototype = {
 
 	knightHit: function (player1, blackKnight) {
 		
-		if ((parseInt( blackKnight.body.position.x) - parseInt(player1.body.position.x) <= 10 || parseInt(player1.body.position.x) - parseInt( blackKnight.body.position.x) <= 10 )) {
+		if ((parseInt( blackKnight.body.position.x) - parseInt(player1.body.position.x) <= 40 || parseInt(player1.body.position.x) - parseInt( blackKnight.body.position.x) <= 40 )) {
 
 			if (this.player1.healthBarProgress > 0) {
 				
@@ -703,7 +708,7 @@ DragonSlayer.Game.prototype = {
 		this.dragon.exists = false;
 		this.dragon.dead = false;
 		this.dragon.y = this.game.height/2.85;
-		this.dragon.health = 5000;
+		this.dragon.health = 4000;
 		this.dragon.damage = 0;
 		this.dragon.bar = this.add.bitmapData(100,10);
 		this.dragon.healthBar = this.game.add.sprite(this.dragon.x - this.dragon.bar.width/2 -15, this.dragon.y - 100, this.dragon.bar);
@@ -846,11 +851,11 @@ DragonSlayer.Game.prototype = {
 						flameOn = true;
 
 					} else {
-						if ((dragon.scale.x === -1.75 && parseInt(dragon.body.position.x)-parseInt(player1.body.position.x) > 40) || (dragon.scale.x === 1.75 && parseInt(player1.body.position.x)-parseInt(dragon.body.position.x)> 350) && parseInt(player1.body.position.y)-parseInt(dragon.body.position.y) < 200) {
+						if ((dragon.scale.x === -1.75 && parseInt(dragon.body.position.x)-parseInt(player1.body.position.x) > 40) || (dragon.scale.x === 1.75 && parseInt(player1.body.position.x)-parseInt(dragon.body.position.x)> 350) && parseInt(player1.body.position.y)-parseInt(dragon.body.position.y) < 150) {
 							dragon.anchor.setTo(0.5, 0.52);
 							dragon.animations.play('fire1', 8, false).onComplete.add(function () {
 								
-								if ((dragon.scale.x === -1.75 && parseInt(dragon.body.position.x)-parseInt(player1.body.position.x) < 100)|| (dragon.scale.x === 1.75 && parseInt(player1.body.position.x)-parseInt(dragon.body.position.x) < 380)) {
+								if (((dragon.scale.x === -1.75 && parseInt(dragon.body.position.x)-parseInt(player1.body.position.x) < 100)|| (dragon.scale.x === 1.75 && parseInt(player1.body.position.x)-parseInt(dragon.body.position.x) < 380))&&(parseInt(player1.body.position.y)) {
 
 									player1.damage += 1000;
 									player1.play('hit', 8, false);
