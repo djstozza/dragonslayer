@@ -14,7 +14,7 @@
       <% @scores.each_with_index do |score, i| %>
         <% if score.dragon_slayer === true %>
         <tr>
-          <td><%= i.ordinalize %></td>
+          <td><%= (i+1).ordinalize %></td>
           <td><%= score.points %></td>
           <td><%= score.user.username %></td>
         </tr>
